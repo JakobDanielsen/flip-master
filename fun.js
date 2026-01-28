@@ -11,16 +11,22 @@ tailsImg.src = "resources/tails.png"
 const li = document.createElement("li");
 const playButton = document.getElementById("play_button")
 
+const timesFlippedField = document.getElementById("times_flipped")
+timesFlippedField.innerHTML = `Times flipped: ${localStorage.getItem("timesFlipped")}`
+
 let headsCounter = 0;
 let headsRecord = 0;
 
 let coinDisplayDelay = 100
 // -localStorage.getItem("record")*2
 
-let timesFlipped = 0;
+let timesFlipped = localStorage.getItem("timesFlipped");
 
 function coinflip(repeat) {
     if(repeat == false) {
+        timesFlipped++
+        localStorage.setItem("timesFlipped",timesFlipped)
+        timesFlippedField.innerHTML = `Times flipped: ${localStorage.getItem("timesFlipped")}`
         coinDisplay.innerHTML = ""
         probabilityField.innerHTML = ``
     }
