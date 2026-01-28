@@ -17,6 +17,7 @@ let headsRecord = 0;
 let coinDisplayDelay = 100
 // -localStorage.getItem("record")*2
 
+let timesFlipped = 0;
 
 function coinflip(repeat) {
     if(repeat == false) {
@@ -25,7 +26,7 @@ function coinflip(repeat) {
     }
     const storedRecord = Number(localStorage.getItem("record")) || 0;
     if (storedRecord > headsRecord) headsRecord = storedRecord;
-    if (Math.random() < 0.9) {
+    if (Math.random() < 0.5) {
     setTimeout(() => {
     headsCounter++;
     coinDisplayDelay = 100+ Math.pow(1.8,headsCounter)
@@ -65,7 +66,11 @@ function coinflip(repeat) {
     if(localStorage.getItem("record")<headsRecord){
         localStorage.setItem("record",headsRecord)
     }
-    probabilityField.innerHTML = `Chance: ${Math.pow(0.5, headsCounter) * 100}% | ${headsCounter} | Top Score: ${localStorage.getItem("record")}`
+    if (headsCounter === 0) { // temporary soltion
+        probabilityField.innerHTML = `Probability: 50% | ${headsCounter} | Top Score: ${localStorage.getItem("record")}`
+    } else {
+        probabilityField.innerHTML = `Probability: ${Math.pow(0.5, headsCounter) * 100}% | ${headsCounter} | Top Score: ${localStorage.getItem("record")}`
+    }
 }
 
 coinflip(false);
