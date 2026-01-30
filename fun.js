@@ -51,7 +51,7 @@ function coinflip(repeat) {
     } else {
         audio = new Audio(`resources/heads${headsCounter}.mp3`);
     }
-    audio.volume = 0.2;
+    audio.volume = 0.1;
     audio.play()
     }, coinDisplayDelay);
     
@@ -64,7 +64,7 @@ function coinflip(repeat) {
     headsCounter = 0;
     playButton.disabled = false
     const audio = new Audio('resources/tails.mp3');
-    audio.volume = 0.2;
+    audio.volume = 0.1;
     audio.play()
     }, coinDisplayDelay);
   }
